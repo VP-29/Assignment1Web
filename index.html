@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100">
+
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex items-center py-4 px-2">
+          <span class="font-semibold text-gray-700 text-lg">Unit Converter</span>
+        </div>
+        <div class="flex space-x-4">
+          <button id="weight-tab" class="tab-btn active-tab">Weight</button>
+          <button id="distance-tab" class="tab-btn">Distance</button>
+          <button id="temperature-tab" class="tab-btn">Temperature</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto mt-10 px-4">
+    <!-- Weight Converter -->
+    <div id="weight-content" class="converter-box">
+      <h1 class="section-title">Weight Converter</h1>
+      <div class="converter-card">
+        <input type="text" id="weight-input" placeholder="Enter weight" class="input-box">
+        <div class="radio-group">
+          <label><input type="radio" name="weight-conversion" id="kg-to-pounds" checked> kg to lb</label>
+          <label><input type="radio" name="weight-conversion" id="pounds-to-kg"> lb to kg</label>
+        </div>
+        <button id="weight-convert-btn" class="convert-btn">Convert</button>
+        <p id="weight-result" class="result-text"></p>
+      </div>
+    </div>
+
+    <!-- Distance Converter -->
+    <div id="distance-content" class="converter-box hidden">
+      <h1 class="section-title">Distance Converter</h1>
+      <div class="converter-card">
+        <input type="text" id="distance-input" placeholder="Enter distance" class="input-box">
+        <div class="radio-group">
+          <label><input type="radio" name="distance-conversion" id="km-to-miles" checked> km to mi</label>
+          <label><input type="radio" name="distance-conversion" id="miles-to-km"> mi to km</label>
+        </div>
+        <button id="distance-convert-btn" class="convert-btn">Convert</button>
+        <p id="distance-result" class="result-text"></p>
+      </div>
+    </div>
+
+    <!-- Temperature Converter -->
+    <div id="temperature-content" class="converter-box hidden">
+      <h1 class="section-title">Temperature Converter</h1>
+      <div class="converter-card">
+        <input type="text" id="temperature-input" placeholder="Enter temperature" class="input-box">
+        <div class="radio-group">
+          <label><input type="radio" name="temperature-conversion" id="celsius-to-fahrenheit" checked> °C to °F</label>
+          <label><input type="radio" name="temperature-conversion" id="fahrenheit-to-celsius"> °F to °C</label>
+        </div>
+        <button id="temperature-convert-btn" class="convert-btn">Convert</button>
+        <p id="temperature-result" class="result-text"></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Conversion Functions
+    const poundsToKg = (pounds) => pounds * 0.45 + " LBS";
+    const test = (poundsToKg) => Math.Roun
+    const kgToPounds = (kg) => kg * 2.2 + " KG";
+    const milesToKm = (miles) => miles * 1.6 + " KM";
+    const kmToMiles = (km) => km * 0.6 + " M";
+    const celsiusToFahrenheit = (celsius) => (celsius * 9/5) + 32 + " °F";
+    const fahrenheitToCelsius = (fahrenheit) => (fahrenheit - 32) * 5/9 + " °C";
+
+    // Show/hide tabs based on selection
+    document.getElementById('weight-tab').addEventListener('click', () => {
+      document.getElementById('weight-content').classList.remove('hidden');
+      document.getElementById('distance-content').classList.add('hidden');
+      document.getElementById('temperature-content').classList.add('hidden');
+    });
+    document.getElementById('distance-tab').addEventListener('click', () => {
+      document.getElementById('weight-content').classList.add('hidden');
+      document.getElementById('distance-content').classList.remove('hidden');
+      document.getElementById('temperature-content').classList.add('hidden');
+    });
+    document.getElementById('temperature-tab').addEventListener('click', () => {
+      document.getElementById('weight-content').classList.add('hidden');
+      document.getElementById('distance-content').classList.add('hidden');
+      document.getElementById('temperature-content').classList.remove('hidden');
+    });
+
+    // Weight conversion logic
+    document.getElementById('weight-convert-btn').addEventListener('click', () => {
+      const input = document.getElementById('weight-input').value;
+      const kgToPoundsRadio = document.getElementById('kg-to-pounds');
+      const poundsToKgRadio = document.getElementById('pounds-to-kg');
+      let result;
+
+      if (kgToPoundsRadio.checked) {
+        result = kgToPounds(parseFloat(input));
+      } else if (poundsToKgRadio.checked) {
+        result = poundsToKg(parseFloat(input));
+      }
+
+      document.getElementById('weight-result').textContent = `Result: ${result}`;
+    });
+
+    // Distance conversion logic
+    document.getElementById('distance-convert-btn').addEventListener('click', () => {
+      const input = document.getElementById('distance-input').value;
+      const kmToMilesRadio = document.getElementById('km-to-miles');
+      const milesToKmRadio = document.getElementById('miles-to-km');
+      let result;
+
+      if (kmToMilesRadio.checked) {
+        result = kmToMiles(parseFloat(input));
+      } else if (milesToKmRadio.checked) {
+        result = milesToKm(parseFloat(input));
+      }
+
+      document.getElementById('distance-result').textContent = `Result: ${result}`;
+    });
+
+    // Temperature conversion logic
+    document.getElementById('temperature-convert-btn').addEventListener('click', () => {
+      const input = document.getElementById('temperature-input').value;
+      const celsiusToFahrenheitRadio = document.getElementById('celsius-to-fahrenheit');
+      const fahrenheitToCelsiusRadio = document.getElementById('fahrenheit-to-celsius');
+      let result;
+
+      if (celsiusToFahrenheitRadio.checked) {
+        result = celsiusToFahrenheit(parseFloat(input));
+      } else if (fahrenheitToCelsiusRadio.checked) {
+        result = fahrenheitToCelsius(parseFloat(input));
+      }
+
+      document.getElementById('temperature-result').textContent = `Result: ${result}`;
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles */
+.tab-btn {
+  @apply py-4 px-2 font-semibold text-gray-500 transition duration-300;
+}
+.tab-btn:hover, .active-tab {
+  @apply text-green-500 border-b-2 border-green-500;
+}
+.converter-box {
+  @apply mt-10;
+}
+.section-title {
+  @apply text-2xl font-bold mb-4;
+}
+.converter-card {
+  @apply bg-white p-6 rounded-lg shadow-md;
+}
+.input-box {
+  @apply w-full p-2 border border-gray-300 rounded mb-4;
+}
+.radio-group {
+  @apply flex space-x-4 mb-4;
+}
+.convert-btn {
+  @apply w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300;
+}
+.result-text {
+  @apply mt-4 text-lg font-semibold;
+}
+.hidden {
+  @apply hidden;
+}

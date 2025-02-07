@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Author: Mingma Sherpa
+    <!-- Author: Mingma Sherpa
  Date: Feb 3, 2025
  Assignment : Advanced JavaScript and Tailwind CSS
 
@@ -64,7 +64,6 @@ and display the result with unit
       <div class="mt-4 text-gray-700 font-bold" id="result"></div>
     </div>
 
-
     <script>
       // function to convert km to miles -->
       function kmToMiles(km) {
@@ -76,8 +75,10 @@ and display the result with unit
         return miles / 0.621371;
       }
 
-        //using eventhandler for convert button
-      document.getElementById("convertButton").addEventListener("click", function () {
+      //using eventhandler for convert button
+      document
+        .getElementById("convertButton")
+        .addEventListener("click", function () {
           const input = document.getElementById("inputValue").value;
           const values = input.split(",").map((v) => parseFloat(v.trim()));
 
@@ -91,7 +92,8 @@ and display the result with unit
           }
 
           //performs conversion and displays result. if input values is 1, only one value is displayed in results else arrays of values are displayed
-          const converted = values.length === 1 ? convertFn(values[0]) : values.map(convertFn);
+          const converted =
+            values.length === 1 ? convertFn(values[0]) : values.map(convertFn);
 
           const result = document.getElementById("result");
           result.textContent = `Result: ${

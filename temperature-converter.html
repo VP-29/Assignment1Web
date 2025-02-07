@@ -24,7 +24,7 @@ and display the result with unit
     <div class="bg-white shadow-md rounded-lg p-6 mb-6 max-w-sm mx-auto">
       <h2 class="text-black text-2xl font-bold mb-4">Temperature Converter</h2>
 
-       <!-- using radio button for conversion of temperture while seting celcuis to fahrenheit as initially checked -->
+      <!-- using radio button for conversion of temperture while seting celcuis to fahrenheit as initially checked -->
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2">
           <input
@@ -70,7 +70,7 @@ and display the result with unit
     </div>
 
     <script>
-      //  function to convert celsius to fahrenheit 
+      //  function to convert celsius to fahrenheit
       function celsiusToFahrenheit(celsius) {
         return (celsius * 9) / 5 + 32;
       }
@@ -81,7 +81,9 @@ and display the result with unit
       }
 
       //using eventlistener for handling user input and converting to correseponding results
-      document.getElementById("convertButton").addEventListener("click", function () {
+      document
+        .getElementById("convertButton")
+        .addEventListener("click", function () {
           const input = document.getElementById("inputValue").value;
           const values = input.split(",").map((v) => parseFloat(v.trim()));
 
@@ -97,7 +99,10 @@ and display the result with unit
           }
 
           // performs conversion and displays result. if input values is 1, only one value is displayed in results else arrays of values are displayed
-          const converted =values.length === 1 ? convertFhn(values[0]) : values.map(convertFhn);
+          const converted =
+            values.length === 1
+              ? convertFhn(values[0])
+              : values.map(convertFhn);
 
           const result = document.getElementById("result");
           result.textContent = `Result: ${

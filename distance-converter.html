@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Author: Mingma Sherpa
+ Date: Feb 3, 2025
+ Assignment : Advanced JavaScript and Tailwind CSS
+
+this HTML based distance converter allow users to convert between kilometer and miles.
+Users can input one or more values separated by commas into the provided input field.
+The conversion is based on the selected radio button- "Kilometer to Miles" or "miles to Kilometers". 
+When the Convert button is clicked, the script processes the input performs the conversion using appropriate formula
+and display the result with unit
+
+  -->
+
+    <title>Distance Converter</title>
+    <!-- using tailwind css for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 py-10">
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6 max-w-sm mx-auto">
+      <h2 class="text-black text-2xl font-bold mb-4">Distance Converter</h2>
+
+      <!-- using radio button for conversion of distance while seting km to miles as initially checked -->
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          <input
+            type="radio"
+            name="conversion"
+            id="kmToMiles"
+            checked
+            class="mr-2"
+          />
+          Kilometers to Miles
+        </label>
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          <input type="radio" name="conversion" id="milesToKm" class="mr-2" />
+          Miles to Kilometers
+        </label>
+      </div>
+
+      <!-- placeholder for input values -->
+      <div class="mb-4">
+        <input
+          class="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="text"
+          id="inputValue"
+          placeholder="Enter value(s)"
+        />
+      </div>
+      <!-- Button that converts input values -->
+      <div class="flex justify-center">
+        <button
+          class="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          id="convertButton"
+        >
+          Convert
+        </button>
+      </div>
+
+      <div class="mt-4 text-gray-700 font-bold" id="result"></div>
+    </div>
+
+
+    <script>
+      // function to convert km to miles -->
+      function kmToMiles(km) {
+        return km * 0.621371;
+      }
+
+      // function to convert miles to km
+      function milesToKm(miles) {
+        return miles / 0.621371;
+      }
+
+        //using eventhandler for convert button
+      document.getElementById("convertButton").addEventListener("click", function () {
+          const input = document.getElementById("inputValue").value;
+          const values = input.split(",").map((v) => parseFloat(v.trim()));
+
+          let convertFn;
+          let isKm = document.getElementById("kmToMiles").checked;
+
+          if (isKm) {
+            convertFn = kmToMiles;
+          } else {
+            convertFn = milesToKm;
+          }
+
+          //performs conversion and displays result. if input values is 1, only one value is displayed in results else arrays of values are displayed
+          const converted = values.length === 1 ? convertFn(values[0]) : values.map(convertFn);
+
+          const result = document.getElementById("result");
+          result.textContent = `Result: ${
+            Array.isArray(converted)
+              ? converted.join(", ")
+              : converted.toFixed(2)
+          } ${isKm ? "mi" : "km"}`;
+        });
+    </script>
+  </body>
+</html>

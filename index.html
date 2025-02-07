@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Author: Mingma Sherpa
+ Date: Feb 3, 2025
+ Assignment : Advanced JavaScript and Tailwind CSS
+ 
+ this index.html page allows user to select different measurement converter where user can nput their input in respective converter and get 
+ corresoonding outputs
+
+  -->
+
+    <title>Converters</title>
+    <!-- using tailwind css for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="font-sans bg-gray-100 m-0 p-0">
+    <div class="max-w-3xl mx-auto my-12 p-6 bg-white rounded-lg shadow-lg">
+      <h1 class="text-4xl text-center mb-6">
+        Welcome to our Measurement Converter
+      </h1>
+      <h2 class="text-2xl text-center mb-6"> Select below what you want to convert!</h2>
+      
+      <!-- this page links to all different converter pages -->
+      <div class="flex flex-col gap-4 items-center">
+        <a
+          href="weight-converter.html"
+          class="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg text-center w-52 transition-colors duration-300 hover:bg-blue-700"
+          >Weight Converter</a
+        >
+        <a
+          href="distance-converter.html"
+          class="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg text-center w-52 transition-colors duration-300 hover:bg-blue-700"
+          >Distance Converter</a
+        >
+        <a
+          href="temperature-converter.html"
+          class="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg text-center w-62 transition-colors duration-300 hover:bg-blue-700"
+          >Temperature Converter</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

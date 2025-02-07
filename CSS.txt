@@ -1,0 +1,59 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>layout.js
+
+import './globals.css'
+import Link from 'next/link'
+
+export const metadata = {
+  title: 'Unit Converter',
+  description: 'Convert between metric and imperial units',
+}
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className="bg-gray-100">
+        <nav className="bg-white shadow-lg">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex justify-between">
+              <div className="flex items-center py-4 px-2">
+                <span className="font-semibold text-gray-500 text-lg">Unit Converter</span>
+              </div>
+              <div className="flex space-x-4">
+                <Link href="/?tab=weight" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Weight</Link>
+                <Link href="/?tab=distance" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Distance</Link>
+                <Link href="/?tab=temperature" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Temperature</Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+        {children}
+      </body>
+    </html>
+  )
+}
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>page.js
+
+'use client'
+
+export default function Home() {
+  const searchParams = useSearchParams()
+  const activeTab = searchParams.get('tab') || 'weight'
+
+  return (
+    <main className="max-w-7xl mx-auto mt-10 px-4">
+      <div className={`${activeTab === 'weight' ? 'block' : 'hidden'}`}>
+        <Weight />
+      </div>
+      <div className={`${activeTab === 'distance' ? 'block' : 'hidden'}`}>
+        <Distance />
+      </div>
+      <div className={`${activeTab === 'temperature' ? 'block' : 'hidden'}`}>
+        <Temperature />
+      </div>
+    </main>
+  )
+}
+
